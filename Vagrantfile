@@ -68,7 +68,12 @@ Vagrant.configure(2) do |config|
 	config.vm.synced_folder "provision/", "/srv/provision/"
 	config.vm.synced_folder "ssh/", "/root/.ssh/", :owner => "root"
 	config.vm.synced_folder "log/", "/srv/log/", :owner => "www-data"
-	config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data", :mount_options => [ "dmode=775", "fmode=774" ]
+
+	if Vagrant::Util::Platform.windows?
+		config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data", :mount_options => ["file_mode=0775", "dir_mode=0775"]
+	else
+		config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data", :mount_options => [ "dmode=775", "fmode=774" ]
+	end
 
 	config.vm.synced_folders.each do |id, options|
 		# Make sure we use Samba for file mounts on Windows
