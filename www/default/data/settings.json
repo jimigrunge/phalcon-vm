@@ -101,7 +101,7 @@
         {
             "label": "vendorcheetah",
             "directory": "vendorcheetah",
-            "domains": "vendorcheetah.mis",
+            "domains": "vendorcheetah.mtginfo.com",
             "repository": "",
             "provider": "git"
         }
