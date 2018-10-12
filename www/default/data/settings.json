@@ -99,9 +99,9 @@
     },
     "sites": [
         {
-            "label": "cheetahdesk",
-            "directory": "cheetahdesk",
-            "domains": "cheetahdesk.jcg",
+            "label": "vendorcheetah",
+            "directory": "vendorcheetah",
+            "domains": "vendorcheetah.test",
             "repository": "",
             "provider": "git"
         }
