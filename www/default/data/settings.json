@@ -3,7 +3,7 @@
         "enabled": true,
         "password": "root",
         "port": "3306",
-        "forward_port": false,
+        "forward_port": true,
         "general_log": false,
         "slow_query_log": true,
         "log_queries_not_using_indexes": true,
@@ -99,9 +99,9 @@
     },
     "sites": [
         {
-            "label": "vendorcheetah",
-            "directory": "vendorcheetah",
-            "domains": "vendorcheetah.mis",
+            "label": "cheetahdesk",
+            "directory": "cheetahdesk",
+            "domains": "cheetahdesk.jcg",
             "repository": "",
             "provider": "git"
         }

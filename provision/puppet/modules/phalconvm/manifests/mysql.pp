@@ -8,6 +8,14 @@ class phalconvm::mysql(
 	$log_queries_not_using_indexes = true,
 	$long_query_time               = 1,
     $autocommit                    = false,
+    $maxAllowedPacket              = '256M',
+#    $logBin                        = 'bin.log',
+    $logBin                        = 'mysql-bin',
+	$logBinIndex                   = 'bin-log.index',
+	$binlogFormat                  = 'row',
+	$innodbFilePerTable            = 0,
+	$innodbForceRecovery           = 0,
+	$serverId                      = 1
 ) {
 	if $enabled == true {
 		class { '::mysql::server':
@@ -22,6 +30,13 @@ class phalconvm::mysql(
 					'slow_query_log'                => $slow_query_log ? { true => 'on', default => 'off' },
 					'long_query_time'               => $long_query_time,
 					'log_queries_not_using_indexes' => $log_queries_not_using_indexes ? { true => 'on', default => 'off' },
+					'max_allowed_packet'            => $maxAllowedPacket,
+					'log-bin'                       => $logBin,
+					'log-bin-index'                 => $logBinIndex,
+					'binlog_format'                 => $binlogFormat,
+					'innodb_file_per_table'         => $innodbFilePerTable,
+					'innodb_force_recovery'         => $innodbForceRecovery,
+					'server-id'                     => $serverId
 				},
 				'client' => {
 					'port' => $port,

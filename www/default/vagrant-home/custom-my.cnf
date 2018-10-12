@@ -1,0 +1,82 @@
+### MANAGED BY PUPPET ###
+
+[client]
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+
+[isamchk]
+key_buffer_size = 16M
+
+[mysqld]
+autocommit = false
+basedir = /usr
+#bind-address = 0.0.0.0
+#binlog_format = row
+datadir = /var/lib/mysql
+#expire_logs_days = 10
+general_log = off
+innodb_file_per_table = 0
+innodb_force_recovery = 0
+key_buffer_size = 16M
+#log-bin = mysql-bin
+log-bin-index = bin-log.index
+log-error = /var/log/mysql/error.log
+log_queries_not_using_indexes = on
+long_query_time = 1
+max_allowed_packet = 256M
+max_binlog_size = 100M
+max_connections = 151
+pid-file = /var/run/mysqld/mysqld.pid
+port = 3306
+query_cache_limit = 1M
+query_cache_size = 16M
+#server-id = 1
+skip-external-locking
+slow_query_log = on
+#socket = /var/run/mysqld/mysqld.sock
+ssl = false
+ssl-ca = /etc/mysql/cacert.pem
+ssl-cert = /etc/mysql/server-cert.pem
+ssl-key = /etc/mysql/server-key.pem
+thread_cache_size = 8
+thread_stack = 256K
+tmpdir = /tmp
+user = mysql
+
+#--ENABLE-BINARY-LOG-WORKING--
+log-bin          = mysql-bin
+#log-bin          = bin.log
+binlog_format    = row
+server-id        = master-01
+expire_logs_days = 10
+#socket=mysql.sock
+
+[mysqld-5.0]
+myisam-recover = BACKUP
+
+[mysqld-5.1]
+myisam-recover = BACKUP
+
+[mysqld-5.5]
+myisam-recover = BACKUP
+
+[mysqld-5.6]
+myisam-recover-options = BACKUP
+
+[mysqld-5.7]
+myisam-recover-options = BACKUP
+
+[mysqld_safe]
+log-error = /var/log/mysql/error.log
+nice = 0
+socket = /var/run/mysqld/mysqld.sock
+
+[mysqldump]
+max_allowed_packet = 16M
+quick
+quote-names
+
+
+
+!includedir /etc/mysql/conf.d
+
